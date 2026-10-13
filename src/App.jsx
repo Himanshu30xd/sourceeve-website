@@ -48,3 +48,34 @@ export default function App() {
     </BrowserRouter>
   );
 }
+import { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import Lenis from "lenis";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
+
+export default function App() {
+  // ... baaki code same rahega
+  
+  return (
+    <BrowserRouter>
+      <ScrollToTop />  {/* <-- Ye add karo */}
+      <Header />
+      <main>
+        <Routes>
+          {/* routes same */}
+        </Routes>
+      </main>
+      <Footer />
+      <WhatsAppButton />
+    </BrowserRouter>
+  );
+}
