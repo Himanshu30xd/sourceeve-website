@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -11,6 +11,14 @@ import ExportImports from "./pages/ExportImports";
 import Events from "./pages/Events";
 import Partner from "./pages/Partner";
 import Contact from "./pages/Contact";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 export default function App() {
   useEffect(() => {
@@ -31,6 +39,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Header />
       <main>
         <Routes>
@@ -41,37 +50,6 @@ export default function App() {
           <Route path="/businesses/events" element={<Events />} />
           <Route path="/partner" element={<Partner />} />
           <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-    </BrowserRouter>
-  );
-}
-import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Lenis from "lenis";
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  
-  return null;
-}
-
-export default function App() {
-  // ... baaki code same rahega
-  
-  return (
-    <BrowserRouter>
-      <ScrollToTop />  {/* <-- Ye add karo */}
-      <Header />
-      <main>
-        <Routes>
-          {/* routes same */}
         </Routes>
       </main>
       <Footer />
