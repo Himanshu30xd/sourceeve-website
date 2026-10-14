@@ -612,3 +612,17 @@ img { max-width: 100%; display: block; }
     gap: 1rem !important;
   }
 }
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(37,211,102,0.5);
+  z-index: 9999; /* ZAROORI — high value */
+}
