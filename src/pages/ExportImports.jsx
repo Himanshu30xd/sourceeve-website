@@ -1,63 +1,82 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "../components/ScrollReveal";
 
-const products = [
+const categories = [
   {
-    title: "Fresh Fruits & Vegetables",
-    desc: "Seasonal fruits and vegetables sourced to buyer specifications and destination-market standards. We coordinate quality checks, packaging, and shipping for markets worldwide.",
-    img: "/images/products-fruits.jpg",
+    title: "Vegetables",
+    tagline: "Fresh & Nutritious",
+    img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600",
   },
   {
-    title: "Spices & Culinary Ingredients",
-    desc: "Indian spices and selected culinary ingredients, with packaging tailored to market demand. From turmeric and chilli to custom blends — sourced and prepared for export.",
-    img: "/images/products-spices.jpg",
+    title: "Fruits",
+    tagline: "Naturally Delicious",
+    img: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=600",
   },
   {
-    title: "Home Furnishing Products",
-    desc: "Home textiles, bedsheets, cushion covers, curtains, towels, table linens, and selected decor products — sourced from trusted manufacturers.",
-    img: "/images/products-home.jpg",
-  },
-];
-
-const whyUs = [
-  {
-    title: "Trusted Sourcing Network",
-    desc: "Established relationships with suppliers and manufacturers across India and China.",
-    icon: (
-      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-    ),
+    title: "Dry Fruits",
+    tagline: "Pure & Wholesome",
+    img: "https://images.unsplash.com/photo-1596591606975-97ee5cef3a1e?w=600",
   },
   {
-    title: "Quality Assurance",
-    desc: "Product specifications, packaging, and quality checks coordinated to destination-market standards.",
-    icon: (
-      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-    ),
+    title: "Indian Spices",
+    tagline: "A Taste Of Tradition",
+    img: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600",
   },
   {
-    title: "Export Coordination",
-    desc: "Support with shipment documentation, logistics, and delivery coordination where agreed.",
-    icon: (
-      <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-    ),
-  },
-  {
-    title: "Global Buyer Network",
-    desc: "Connecting suppliers with buyers across the Middle East, Europe, and the United States.",
-    icon: (
-      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-    ),
+    title: "Ground & Blend Spices",
+    tagline: "For Better Tomorrow",
+    img: "https://images.unsplash.com/photo-1532336414038-cf19250c5757?w=600",
   },
 ];
 
-const stats = [
-  { number: "50+", label: "Product Categories" },
-  { number: "15+", label: "Target Markets" },
-  { number: "100+", label: "Supplier Partners" },
-  { number: "24/7", label: "Trade Support" },
+const topProducts = [
+  { name: "Cardamom", img: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=400" },
+  { name: "Cashew Nuts", img: "https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=400" },
+  { name: "Fresh Green Chillies", img: "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?w=400" },
+  { name: "Red Onions", img: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400" },
+  { name: "Turmeric", img: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400" },
+  { name: "Black Pepper", img: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=400" },
+  { name: "Basmati Rice", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400" },
+  { name: "Fresh Mangoes", img: "https://images.unsplash.com/photo-1553279768-865429fa0078?w=400" },
+];
+
+const testimonials = [
+  {
+    quote: "Really awesome. Thanks to SourceEve, we've just opened our 4th store! Exactly what our business was looking for.",
+    author: "Daniel J. Willis",
+    company: "Retail Chain, USA",
+  },
+  {
+    quote: "SourceEve has got everything we need. Thank you for making the import painless, pleasant and most of all hassle-free!",
+    author: "Louis Zander",
+    company: "Importer, Germany",
+  },
+  {
+    quote: "Best products ever! And the best import experience as well. SourceEve is the real deal.",
+    author: "Irfan Shahib",
+    company: "Distributor, UAE",
+  },
 ];
 
 export default function ExportImports() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const productsPerSlide = 4; // Desktop: 4 products per slide
+  const totalSlides = Math.ceil(topProducts.length / productsPerSlide);
+
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % totalSlides);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [totalSlides]);
+
+  const visibleProducts = topProducts.slice(
+    currentSlide * productsPerSlide,
+    currentSlide * productsPerSlide + productsPerSlide
+  );
+
   return (
     <div className="page">
       {/* HERO */}
@@ -65,42 +84,97 @@ export default function ExportImports() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        style={{ textAlign: "center", marginBottom: "4rem" }}
+        style={{
+          position: "relative",
+          borderRadius: "20px",
+          overflow: "hidden",
+          marginBottom: "4rem",
+          background:
+            "linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=1600') center/cover",
+          padding: "5rem 2rem",
+          textAlign: "center",
+          color: "#fff",
+        }}
       >
-        <h1>SourceEve Export Imports</h1>
-        <p style={{ fontSize: "1.2rem", color: "var(--grey)", maxWidth: "750px", margin: "1rem auto 0" }}>
-          Bringing Quality Products to Global Markets
+        <h1 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", marginBottom: "1rem" }}>
+          Exporting the <span style={{ color: "var(--green)" }}>Freshness of India</span> to the World
+        </h1>
+        <p style={{ maxWidth: "750px", margin: "0 auto 2rem", fontSize: "1.1rem", opacity: 0.95 }}>
+          Premium quality vegetables, fruits, spices, dry fruits, cereals and pulses sourced from trusted
+          Indian farms and delivered to global markets.
         </p>
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+          <a href="#products" className="btn-primary">Explore Products</a>
+          <a href="/contact" className="btn-secondary" style={{ color: "#fff", borderColor: "#fff" }}>Get In Touch</a>
+        </div>
+        <div style={{ marginTop: "2.5rem", display: "flex", gap: "2rem", justifyContent: "center", flexWrap: "wrap", fontSize: "0.95rem" }}>
+          <span>100% Natural & Farm Fresh</span>
+          <span>Premium Quality</span>
+          <span>Trusted By Clients Worldwide</span>
+        </div>
       </motion.div>
 
       {/* INTRO */}
       <ScrollReveal>
         <div style={{ maxWidth: "900px", margin: "0 auto 4rem", textAlign: "center" }}>
-          <h2>International Trade & Global Sourcing</h2>
-          <p style={{ fontSize: "1.05rem" }}>
-            SourceEve Export Imports is the international trading division of SourceEve Group of Companies —
-            connecting suppliers, manufacturers, distributors, and buyers across global markets. Our business
-            spans fresh produce, spices, home furnishings, and selected merchandise for cross-border trade.
+          <h2>Our Commitment to Quality & Excellence</h2>
+          <p style={{ fontSize: "1.05rem", color: "var(--grey)", marginTop: "1rem" }}>
+            At SourceEve Export Imports, we are committed to delivering premium-quality agro products sourced
+            with care from trusted suppliers. From fresh vegetables and authentic Indian spices to carefully
+            selected products, we focus on quality, consistency, and customer satisfaction at every stage.
           </p>
         </div>
       </ScrollReveal>
 
-      {/* PRODUCTS */}
+      {/* 3 VALUE CARDS */}
       <ScrollReveal>
-        <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>Our Product Categories</h2>
+        <div className="business-grid" style={{ marginBottom: "5rem" }}>
+          <div className="business-card">
+            <div className="business-card-content">
+              <h3>We Export Values</h3>
+              <p>
+                We at SourceEve, Vegetables Exporters in India and Spices Exporters in India, believe that
+                quality is our business and our business is always about delivering values.
+              </p>
+            </div>
+          </div>
+          <div className="business-card">
+            <div className="business-card-content">
+              <h3>Indian Spices</h3>
+              <p>
+                India being the largest producer of spices has made its footprint in the global market with
+                respect to both quality and quantity.
+              </p>
+            </div>
+          </div>
+          <div className="business-card">
+            <div className="business-card-content">
+              <h3>Commitment to Quality</h3>
+              <p>
+                We are expertised in hand-picking the right products and it is giving us repeated customers
+                across international markets.
+              </p>
+            </div>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* CATEGORIES */}
+      <ScrollReveal>
+        <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>Our Categories</h2>
         <p className="section-sub" style={{ marginBottom: "3rem" }}>
-          Sourced from trusted suppliers and prepared to meet the requirements of destination markets.
+          A Rich Heritage Of Indian Agro Products
         </p>
-        <div className="business-grid" style={{ marginBottom: "4rem" }}>
-          {products.map((p, i) => (
-            <ScrollReveal key={p.title} delay={i * 0.15}>
+        <div className="business-grid" style={{ marginBottom: "5rem" }}>
+          {categories.map((c, i) => (
+            <ScrollReveal key={c.title} delay={i * 0.1}>
               <div className="business-card">
                 <div className="business-card-image">
-                  <img src={p.img} alt={p.title} loading="lazy" />
+                  <img src={c.img} alt={c.title} loading="lazy" />
                 </div>
                 <div className="business-card-content">
-                  <h3>{p.title}</h3>
-                  <p>{p.desc}</p>
+                  <h3>{c.title}</h3>
+                  <p style={{ color: "var(--green)", fontWeight: 600 }}>{c.tagline}</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -108,84 +182,151 @@ export default function ExportImports() {
         </div>
       </ScrollReveal>
 
-      {/* WHY CHOOSE US */}
+      {/* TOP PRODUCTS SLIDER */}
       <ScrollReveal>
-        <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>Why SourceEve Export Imports?</h2>
+        <div id="products" style={{ marginBottom: "5rem" }}>
+          <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>Featured Products</h2>
+          <p className="section-sub" style={{ marginBottom: "3rem" }}>
+            Our Top Export Products
+          </p>
+
+          <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(4, 1fr)",
+                gap: "1.5rem",
+                transition: "all 0.5s ease",
+              }}
+              className="products-slider"
+            >
+              {visibleProducts.map((p, i) => (
+                <motion.div
+                  key={p.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  style={{
+                    background: "#fff",
+                    borderRadius: "14px",
+                    overflow: "hidden",
+                    boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                    textAlign: "center",
+                  }}
+                >
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    style={{ width: "100%", height: "180px", objectFit: "cover" }}
+                    loading="lazy"
+                  />
+                  <div style={{ padding: "1rem" }}>
+                    <h4 style={{ fontSize: "1.05rem", fontFamily: "'Newsreader', serif" }}>{p.name}</h4>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Dots */}
+            <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", marginTop: "2rem" }}>
+              {Array.from({ length: totalSlides }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentSlide(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                  style={{
+                    width: currentSlide === i ? "28px" : "10px",
+                    height: "10px",
+                    borderRadius: "5px",
+                    background: currentSlide === i ? "var(--green)" : "#ccc",
+                    border: "none",
+                    cursor: "pointer",
+                    transition: "all 0.3s",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* DIRECTOR'S NOTE */}
+      <ScrollReveal>
+        <div
+          style={{
+            background: "var(--light-gray)",
+            borderRadius: "16px",
+            padding: "3rem 2rem",
+            marginBottom: "5rem",
+          }}
+        >
+          <h2 style={{ marginBottom: "1.5rem" }}>Our Director's Note for Industry Outlook</h2>
+          <p style={{ color: "var(--grey)", marginBottom: "1rem", fontSize: "1.02rem" }}>
+            We at SourceEve Export Imports believe in long-term relationships and success that is driven by
+            trust, customer satisfaction, quality, ethical business practices, and the service we provide to
+            our customers.
+          </p>
+          <p style={{ color: "var(--grey)", marginBottom: "1rem", fontSize: "1.02rem" }}>
+            Our team, with profound knowledge of Indian spices and agro-products, is committed to providing
+            international quality standards, timely delivery, and maintaining a strong relationship with our
+            customers.
+          </p>
+          <p style={{ color: "var(--grey)", marginBottom: "1rem", fontSize: "1.02rem" }}>
+            Our competitive pricing, customized packing, high international quality standards, timely
+            delivery of goods, stringent and personalized quality checks, and experienced professionals have
+            made us the most eminent exporter.
+          </p>
+          <p style={{ color: "var(--grey)", fontSize: "1.02rem" }}>
+            Over the years, SourceEve Export Imports has adhered to understanding all stakeholders and
+            addressing their needs in a way that is sustainable for our business. We strongly believe that
+            trust and faith cannot be purchased or acquired — it has to be earned. Thus, we strive to earn
+            ours.
+          </p>
+          <a href="/about" className="btn-primary" style={{ display: "inline-block", marginTop: "2rem" }}>
+            More About Us
+          </a>
+        </div>
+      </ScrollReveal>
+
+      {/* TESTIMONIALS */}
+      <ScrollReveal>
+        <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>What Our Clients Say</h2>
         <p className="section-sub" style={{ marginBottom: "3rem" }}>
-          Reliable sourcing, transparent communication, and dependable trade partnerships.
+          Trusted by Customers Around the World
         </p>
-        <div className="values-grid" style={{ marginBottom: "4rem" }}>
-          {whyUs.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 0.1}>
-              <div className="value-card" style={{ textAlign: "left" }}>
-                <div className="why-icon" style={{ margin: "0 0 1rem 0" }}>
-                  <svg viewBox="0 0 24 24" style={{ width: "30px", height: "30px", fill: "var(--green)" }}>
-                    {item.icon.props.children.props.d}
-                  </svg>
-                </div>
-                <h3 style={{ fontSize: "1.15rem", marginBottom: "0.5rem" }}>{item.title}</h3>
-                <p style={{ fontSize: "0.95rem" }}>{item.desc}</p>
+        <div className="business-grid" style={{ marginBottom: "5rem" }}>
+          {testimonials.map((t, i) => (
+            <ScrollReveal key={t.author} delay={i * 0.15}>
+              <div className="business-card" style={{ padding: "2rem", borderLeft: "4px solid var(--green)" }}>
+                <p style={{ fontStyle: "italic", color: "#444", marginBottom: "1.25rem" }}>"{t.quote}"</p>
+                <div style={{ fontWeight: 600, color: "var(--black)" }}>{t.author}</div>
+                <div style={{ fontSize: "0.88rem", color: "var(--grey)" }}>{t.company}</div>
               </div>
             </ScrollReveal>
           ))}
-        </div>
-      </ScrollReveal>
-
-      {/* STATS */}
-      <ScrollReveal>
-        <div className="stats" style={{ borderRadius: "16px", marginBottom: "4rem" }}>
-          <div className="stats-grid">
-            {stats.map((s) => (
-              <div key={s.label} className="stat">
-                <h3>{s.number}</h3>
-                <p>{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </ScrollReveal>
-
-      {/* MARKETS */}
-      <ScrollReveal>
-        <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>Markets We Serve</h2>
-        <p className="section-sub" style={{ marginBottom: "3rem" }}>
-          Cross-border trade connecting key sourcing and buyer markets.
-        </p>
-        <div className="values-grid" style={{ marginBottom: "4rem" }}>
-          <div className="value-card" style={{ textAlign: "left" }}>
-            <h3 style={{ fontSize: "1.2rem", marginBottom: "0.75rem" }}>Sourcing Markets</h3>
-            <p style={{ fontSize: "0.98rem" }}>
-              India and China — with a focus on fresh produce, spices, and home furnishing products.
-            </p>
-          </div>
-          <div className="value-card" style={{ textAlign: "left" }}>
-            <h3 style={{ fontSize: "1.2rem", marginBottom: "0.75rem" }}>Target Buyer Markets</h3>
-            <p style={{ fontSize: "0.98rem" }}>
-              Middle East, Europe, and the United States — serving importers, distributors, and wholesalers.
-            </p>
-          </div>
-          <div className="value-card" style={{ textAlign: "left" }}>
-            <h3 style={{ fontSize: "1.2rem", marginBottom: "0.75rem" }}>Trade Approach</h3>
-            <p style={{ fontSize: "0.98rem" }}>
-              Supplier sourcing, buyer connections, product specifications, and shipment documentation.
-            </p>
-          </div>
         </div>
       </ScrollReveal>
 
       {/* CTA */}
       <ScrollReveal>
-        <div style={{ textAlign: "center", padding: "3rem 1rem", background: "var(--light-gray)", borderRadius: "16px" }}>
-          <h2 style={{ marginBottom: "1rem" }}>Looking to Source Products or Expand Your Market?</h2>
-          <p style={{ maxWidth: "600px", margin: "0 auto 2rem", color: "var(--grey)" }}>
-            Connect with SourceEve Export Imports to discuss product requirements, sourcing opportunities,
-            or international trade partnerships.
+        <div
+          style={{
+            background: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=1600') center/cover",
+            borderRadius: "16px",
+            padding: "4rem 2rem",
+            textAlign: "center",
+            color: "#fff",
+          }}
+        >
+          <h2 style={{ marginBottom: "1rem" }}>Let's Grow A Healthier Tomorrow Together</h2>
+          <p style={{ maxWidth: "600px", margin: "0 auto 2rem", opacity: 0.95 }}>
+            Partner with SourceEve Export Imports for premium Indian agro products.
           </p>
           <a href="/contact" className="btn-primary" style={{ display: "inline-block" }}>
-            Get in Touch
+            Send an Enquiry
           </a>
         </div>
       </ScrollReveal>
     </div>
   );
-}
+        }
