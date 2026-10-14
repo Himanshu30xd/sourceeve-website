@@ -600,3 +600,15 @@ img { max-width: 100%; display: block; }
   .hsec { padding: 60px 5%; }
   .stitle { margin-bottom: 2rem; }
 }
+/* Products Slider — Mobile pe 2 columns */
+@media (max-width: 900px) {
+  .products-slider {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+@media (max-width: 500px) {
+  .products-slider {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
