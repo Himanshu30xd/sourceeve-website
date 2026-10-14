@@ -1,18 +1,712 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/images/logo.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SourceEve Group | Connecting People, Products & Possibilities</title>
-    <meta name="description" content="SourceEve Group of Companies — Staffing Solutions, Export Imports, Events & Exhibitions. We Handle Your Job, You Focus on Your Dreams." />
-    <meta property="og:title" content="SourceEve Group of Companies" />
-    <meta property="og:description" content="Connecting People, Products & Possibilities." />
-    <meta property="og:image" content="/images/logo.png" />
-    <meta property="og:type" content="website" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SourceEve | Exhibition Stall Design & Fabrication</title>
+<meta name="description" content="SourceEve — India's trusted exhibition stall design, fabrication, 3D design & modular stands company. Serving India & international markets." />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;600;700&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ RESET & BASE ============ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #1a1a1a;
+  background: #fff;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: 'Newsreader', serif; font-weight: 600; line-height: 1.25; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.6rem, 3.5vw, 2.5rem); }
+h3 { font-size: clamp(1.2rem, 2.2vw, 1.6rem); }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+:root {
+  --green: #8bc34a;
+  --green-dark: #6fa832;
+  --dark: #1a1a1a;
+  --grey: #6b7280;
+  --light: #f7f9f4;
+}
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+/* ============ HEADER ============ */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  padding: 1rem 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-family: 'Newsreader', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+.logo span { color: var(--green); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.nav a {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--dark);
+  transition: color 0.3s;
+}
+.nav a:hover { color: var(--green); }
+
+/* ============ HERO ============ */
+.hero {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  padding: 5rem 5%;
+  background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600') center/cover no-repeat;
+}
+.hero-content { max-width: 900px; position: relative; z-index: 2; }
+.hero h1 { margin-bottom: 1.5rem; }
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn {
+  display: inline-block;
+  background: var(--green);
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(139,195,74,0.4);
+}
+.btn-outline {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+.btn-outline:hover { background: #fff; color: var(--dark); }
+
+/* ============ SECTION BASE ============ */
+.section {
+  padding: 80px 5%;
+}
+.section-alt { background: var(--light); }
+.section-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--dark);
+}
+.section-title span { color: var(--green); }
+.section-sub {
+  text-align: center;
+  color: var(--grey);
+  max-width: 700px;
+  margin: 0 auto 60px;
+  font-size: 1.05rem;
+}
+
+/* ============ ABOUT ============ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.about-text h2 { margin-bottom: 1.5rem; }
+.about-text p { margin-bottom: 1.2rem; color: #333; }
+.about-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.about-images img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.about-images img:first-child {
+  grid-column: span 2;
+  height: 280px;
+}
+
+/* ============ SERVICES ============ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.service-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  transition: all 0.4s ease;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+.service-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+.service-card-body {
+  padding: 1.75rem;
+  text-align: center;
+}
+.service-card h3 {
+  margin-bottom: 0.75rem;
+  color: var(--dark);
+}
+.service-card p { color: var(--grey); font-size: 0.98rem; }
+
+/* ============ WHY CHOOSE ============ */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.why-card {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 14px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+.why-card:hover {
+  border-color: var(--green);
+  transform: translateY(-5px);
+}
+.why-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.why-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.why-card p { color: var(--grey); font-size: 0.95rem; }
+
+/* ============ STATS ============ */
+.stats {
+  background: var(--green);
+  padding: 60px 5%;
+  color: #fff;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1240px;
+  margin: 0 auto;
+  text-align: center;
+}
+.stat h3 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-family: 'Newsreader', serif;
+  margin-bottom: 0.5rem;
+}
+.stat p { font-size: 1rem; opacity: 0.95; }
+
+/* ============ PROJECTS ============ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.project-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  height: 280px;
+  cursor: pointer;
+}
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+.project-card:hover img { transform: scale(1.08); }
+.project-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.85));
+  color: #fff;
+}
+.project-overlay h4 { font-size: 1.2rem; margin-bottom: 0.25rem; }
+.project-overlay p { font-size: 0.9rem; opacity: 0.9; }
+
+/* ============ TESTIMONIALS ============ */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.testimonial-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  border-left: 4px solid var(--green);
+}
+.testimonial-card p {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 1.25rem;
+}
+.testimonial-author {
+  font-weight: 600;
+  color: var(--dark);
+}
+.testimonial-company {
+  font-size: 0.88rem;
+  color: var(--grey);
+}
+
+/* ============ CITIES ============ */
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 15px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.city-card {
+  background: #fff;
+  padding: 1.25rem 1rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid #e8f0dd;
+  transition: all 0.3s;
+}
+.city-card:hover {
+  border-color: var(--green);
+  transform: translateY(-3px);
+}
+.city-icon {
+  font-size: 1.5rem;
+  color: var(--green);
+  margin-bottom: 0.5rem;
+}
+.city-card p {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--dark);
+}
+
+/* ============ UPCOMING SHOWS ============ */
+.shows-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.show-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  border: 2px solid #e8f0dd;
+  transition: all 0.3s;
+}
+.show-card:hover {
+  border-color: var(--green);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(139,195,74,0.15);
+}
+.show-card h4 {
+  color: var(--green);
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+}
+.show-card .date {
+  font-size: 0.85rem;
+  color: var(--grey);
+  margin-bottom: 0.5rem;
+}
+.show-card .location {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.95rem;
+}
+
+/* ============ CONTACT ============ */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 50px;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.contact-info h2 { margin-bottom: 1.5rem; }
+.contact-info p { color: #333; margin-bottom: 1rem; }
+.contact-info .contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  padding: 1rem 1.1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.3s;
+  background: #fff;
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(139,195,74,0.12);
+}
+.contact-form textarea,
+.contact-form .full-width {
+  grid-column: span 2;
+}
+.contact-form button {
+  grid-column: span 2;
+  padding: 1rem;
+  font-size: 1.05rem;
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--dark);
+  color: #fff;
+  padding: 3rem 5% 1.5rem;
+  text-align: center;
+}
+.footer h3 {
+  color: var(--green);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+.footer p, .footer a {
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 0.95rem;
+}
+.footer a:hover { color: var(--green); }
+.footer .copyright {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.85rem;
+}
+
+/* ============ WHATSAPP FLOAT ============ */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(37,211,102,0.5);
+  z-index: 1000;
+  transition: all 0.3s;
+}
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(37,211,102,0.7);
+}
+.whatsapp-float svg { width: 32px; height: 32px; fill: #fff; }
+
+/* ============ MOBILE RESPONSIVE ============ */
+@media (max-width: 900px) {
+  body { font-size: 16px; }
+  .section { padding: 60px 5%; }
+
+  .nav-toggle { display: block; }
+  .nav {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: #fff;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: none;
+  }
+  .nav.open { display: flex; }
+
+  .about-grid,
+  .contact-grid { grid-template-columns: 1fr; gap: 30px; }
+
+  .services-grid,
+  .projects-grid,
+  .testimonial-grid { grid-template-columns: 1fr; }
+
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+
+  .cities-grid { grid-template-columns: repeat(3, 1fr); }
+
+  .shows-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .contact-form { grid-template-columns: 1fr; }
+  .contact-form textarea,
+  .contact-form .full-width,
+  .contact-form button { grid-column: span 1; }
+
+  .about-images img:first-child { height: 220px; }
+  .about-images img { height: 160px; }
+
+  .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; }
+  .whatsapp-float svg { width: 28px; height: 28px; }
+}
+
+@media (max-width: 500px) {
+  .cities-grid { grid-template-columns: repeat(2, 1fr); }
+  .shows-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <a href="#" class="logo">Source<span>Eve</span></a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
+  <nav class="nav">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#cities">Cities</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>India's Trusted Exhibition Stall Design & Fabrication Partner</h1>
+    <p>SourceEve creates custom exhibition stands, modular displays, and 3D-designed pavilions that help your brand stand out at every trade show — across India and international markets.</p>
+    <a href="#contact" class="btn">Send Your Query</a>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <h2>About <span style="color: var(--green);">SourceEve</span></h2>
+      <p>For over a decade, SourceEve has been designing and building exhibition stalls that turn crowded trade shows into brand experiences. From concept sketches to on-site installation, we handle every stage of exhibition stall design and fabrication.</p>
+      <p>Our portfolio spans custom-built stalls, modular setups, and country pavilions — delivered across India and international markets including Europe, the Middle East, and the USA.</p>
+      <p>Whether you're exhibiting at a local trade show or a global expo, our team ensures your stand is delivered on time, on budget, and beyond expectations.</p>
+      <a href="#contact" class="btn" style="margin-top: 1rem;">Get a Free Quote</a>
+    </div>
+    <div class="about-images">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800" alt="Exhibition stall design">
+      <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=600" alt="Trade show booth">
+      <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600" alt="Exhibition booth fabrication">
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section section-alt" id="services">
+  <h2 class="section-title">Our <span>Services</span></h2>
+  <p class="section-sub">From concept to completion — comprehensive exhibition stall solutions designed for every budget and requirement.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800" alt="Custom Stands">
+      <div class="service-card-body">
+        <h3>Custom Exhibition Stands</h3>
+        <p>Bespoke stall designs built from scratch — crafted to reflect your brand identity, product range, and event objectives.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800" alt="Modular Stands">
+      <div class="service-card-body">
+        <h3>Modular & Portable Stands</h3>
+        <p>Reusable, easy-to-assemble exhibition systems — perfect for businesses exhibiting at multiple events throughout the year.</p>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800" alt="Country Pavilion">
+      <div class="service-card-body">
+        <h3>Country Pavilions</h3>
+        <p>Large-scale pavilion design and fabrication for national trade bodies, industry associations, and multi-brand exhibitions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section class="section">
+  <h2 class="section-title">Why Choose <span>SourceEve</span>?</h2>
+  <p class="section-sub">Everything you need for a stress-free exhibition experience — under one roof.</p>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">✅</div>
+      <h3>Hassle-Free Process</h3>
+      <p>Design, fabrication, logistics, installation, and dismantling — we handle it all.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎨</div>
+      <h3>In-House 3D Design</h3>
+      <p>Visualize your stall before production with detailed 3D renders and layouts.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">👥</div>
+      <h3>Expert Team</h3>
+      <p>Designers, fabricators, and project managers with years of exhibition experience.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🌍</div>
+      <h3>Pan-India + Global</h3>
+      <p>Serving major Indian cities and international exhibition destinations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat"><h3>1,000+</h3><p>Happy Clients</p></div>
+    <div class="stat"><h3>3,950+</h3><p>Projects Delivered</p></div>
+    <div class="stat"><h3>5+</h3><p>Continents Served</p></div>
+    <div class="stat"><h3>320+</h3><p>Exhibitions Covered</p></div>
+  </div>
+</section>
+
+<!-- ============ RECENT PROJECTS ============ -->
+<section class="section section-alt" id="projects">
+  <h2 class="section-title">Our Recent <span>Projects</span></h2>
+  <p class="section-sub">A glimpse of the exhibition stalls we've designed and delivered for brands worldwide.</p>
+
+  <div class="projects-grid">
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800" alt="Project 1">
+      <div class="project-overlay">
+        <h4>Dens Solution</h4>
+        <p>27 SQM — Trade Show Stall</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=800" alt="Project 2">
+      <div class="project-overlay">
+        <h4>Yuma Medical</h4>
+        <p>18 SQM — Custom Booth</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800" alt="Project 3">
+      <div class="project-overlay">
+        <h4>Rosatom</h4>
+        <p>64 SQM — Country Pavilion</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="section">
+  <h2 class="section-title">What Our <span>Clients Say</span></h2>
+  <p class="section-sub">Real feedback from brands we've partnered with across exhibitions worldwide.</p>
+
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <p>"SourceEve delivered our 2025 trade show booth exactly as designed. Professional team, on-time delivery, and stunning execution. Highly recommended."</p>
+      <div class="testimonial-author">Aqua Tech Team</div>
+      <div class="testimonial-company">Aqua Tech 2025, Amsterdam</div>
+    </div>
+    <div class="testimonial-card">
+      <p>"Working with SourceEve was seamless from start to finish. Their 3D designs helped us visualize the stall before production — no surprises."</p>
+      <div class="testimonial-author">Marketing Head</div>
+      <div class="testimonial-company">Yuma Medical</div>
+    </div>
+    <div class="testimonial-card">
+      <p>"Our country pavilion was complex, but the SourceEve team handled every detail. Excellent project management and quality fabrication."</p>
+      <div class="testimonial-author">Event Coordinator</div>
+      <div class="testimonial-company">Rosatom Pavilion</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CITIES ============ -->
+<section class="section section-alt" id="cities">
+  <h2 class="section-title">Major <span>Exhibiting Cities</span></h2>
+  <p class="section-sub">We deliver exhibition stalls across India and international exhibition hubs.</p>
+
+  <div class="cities-grid">
+    <div class="city-card"><div class="city-icon">📍</div><p>Delhi</p></div>
+    <div class="city-card"><div class="city-icon">📍</div><p>Mumbai</p></div>
+    <div class="city-card"><div class="city-icon">📍</div><p>Bangalore</p></div>
+    <div
